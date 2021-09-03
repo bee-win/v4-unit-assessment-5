@@ -17,9 +17,12 @@ class Post extends Component {
     }
   }
 
+  // the get IS coming back...why isnn't it displaying?
   componentDidMount() {
-    axios.get(`/api/post/1`)
+    const { post_id } = this.props.match.params
+    axios.get(`/api/post/${post_id}`)
       .then(res => {
+        console.log(res.data);
         this.setState({ ...res.data, loading: false })
       })
   }
